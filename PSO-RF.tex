@@ -1,0 +1,133 @@
+
+%%%%%%%%%%%%%%%%%%%%%%% file typeinst.tex %%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% This is the LaTeX source for the instructions to authors using
+% the LaTeX document class 'llncs.cls' for contributions to
+% the Lecture Notes in Computer Sciences series.
+% http://www.springer.com/lncs       Springer Heidelberg 2006/05/04
+%
+% It may be used as a template for your own input - copy it
+% to a new file with a new name and use it as the basis
+% for your article.
+%
+% NB: the document class 'llncs' has its own and detailed documentation, see
+% ftp://ftp.springer.de/data/pubftp/pub/tex/latex/llncs/latex2e/llncsdoc.pdf
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\documentclass[runningheads,a4paper]{llncs}
+\usepackage{multirow}
+\usepackage{amssymb}
+%\usepackage{cite}
+\setcounter{tocdepth}{3}
+\usepackage{graphicx}
+\usepackage{amssymb,amsfonts,amsbsy,epsfig,psfig}
+\usepackage{url}
+\usepackage{graphicx,times,psfig,amsmath}
+\usepackage{float}
+
+\urldef{\mailsa}\path|{}| 
+%\urldef{\mailsc}\path|erika.siebert-cole, b.shboul, n.ghatasheh}@ju.edu.jo|    
+\newcommand{\keywords}[1]{\par\addvspace\baselineskip
+\noindent\keywordname\enspace\ignorespaces#1}
+
+\begin{document}
+
+\mainmatter  % start of an individual contribution
+
+% first the title is needed
+\title{ Camera brands sentiment analysis: A hybrid system using particle swarm optimization and support vector machines }
+
+% a short form should be given in case it is too long for the running head
+\titlerunning{Lecture Notes in Computer Science: Authors' Instructions}
+
+% the name(s) of the author(s) follow(s) next
+%
+% NB: Chinese authors should write their first names(s) in front of
+% their surnames. This ensures that the names appear correctly in
+% the running heads and the author index.
+%
+%\author{  }
+%
+%\authorrunning{Lecture Notes in Computer Science: Authors' Instructions}
+% (feature abused for this document to repeat the title also on left hand pages)
+
+% the affiliations are given next; don't give your e-mail address
+% unless you accept that it will be published
+%\institute{The University of Jordan\\
+%Amman, Jordan\\
+%\mailsa\\
+%\mailsc\\
+%\url{http://www.springer.com/lncs}}
+%}
+%
+% NB: a more complex sample for affiliations and the mapping to the
+% corresponding authors can be found in the file "llncs.dem"
+% (search for the string "\mainmatter" where a contribution starts).
+% "llncs.dem" accompanies the document class "llncs.cls".
+%
+
+\toctitle{Lecture Notes in Computer Science}
+%\tocauthor{Authors' Instructions}
+\maketitle
+
+
+\begin{abstract}
+
+This paper aims at implementing machine learning technique into sentiment analysis through TF-IDF. We used Support Vector Machine with Genetic Algorithm in order to obtain the maximum accuracy with the least number of features (words) produced by the TF-IDF.
+
+
+\keywords{Sentiment Analysis; Support Vector Machine;Genetic Algorithm;TF-IDF;Feature Selection}
+\end{abstract}
+
+
+\section{Introduction}
+Since the rise of social networks; Facebook, Twitter, etc., sentiment analysis (opinion mining) had been one of the most important and trending topics in the field of data mining for as to form a vital role in business intelligence field. The ability of extracting feelings, emotions, and opinions out of texts made information extraction out of documents possible. These large amounts information may include many different forms such as customer satisfaction, personalization, churning, public interests, etc. It even had exceeded the area of business to be useful in other fields such as politics, law, social sciences, etc.
+However, problems have surfaced along with this evolution; both different languages and dialects form a very challenging dilemma as users tend to differ in their writing styles. Hence, determining happy, sad, neutral, frequent, infrequent words and keywords represents a difficult task to accomplish.
+Responding to this issue, several approaches were made in order to obtain the best possible accuracy for determining users’ emotions towards specific subjects. The following section will present some of the proposed solutions and that are related to our work.
+
+
+\section{Related Work}
+
+Several previous approaches have been made before in order to apply data mining techniques in sentiment analysis. [1] had used a number of machine learning algorithms in order to classify documents as positive or negative emotions. These algorithms included Naïve Bayes and Support Vector Machine. Results were compared against human-based guidelines and were found to be better in general.
+
+In 2004, another research had been conducted by [2] on sentiment analysis using Support Vector Machines (SVM). Words and phrases were considered as features for SVM. Results were shown to be promising.
+Similarly, [3] proposed a new approach called Delta TF-IDF which assigns weights to word scores. SVM was used to calculate the accuracy for sentiment analysis after applying this method and was compared with the accuracy produced by known TF-IDF.
+Many other similar approaches have used learning techniques in sentiment analysis and had shown significant improvements in overall performance [4], [5], [6], and [7].
+
+
+
+\section{Proposed approach}
+	\label{PSORF}
+	
+	This paper uses words in Term Frequency – Inverse Document Frequency (TF-IDF) tables as features in order to perform feature selection through SVM using wrapper method. Genetic algorithm is chosen to perform the random selection of the words (features). The purpose of this process is to demonstrate that words reduction contributes in performing better in terms of time and accuracy. Fig.1 shows the workflow of our approach.
+
+
+\section{Data set description}
+\label{data}
+
+Application chosen by this paper is related to a set of 5 different brands of cameras which are Nikon, Sony, Panasonic, Olympus, and Canon. We extracted 1000 tweets for each brand from Twitter using the hashtags of their names plus the word “camera” to exclude the search as much as possible to cameras only.
+
+
+We also targeted Christmas time to extract these tweets to guarantee more users interactions rather than regular advertisements and announcements that are made by brands owners.
+
+The preprocess phase included manually classifying tweets for each dataset by two experts into positive, negative, and neutral emotions. The emotions in which both experts agreed on remained as they are, and the emotions that experts disagreed about were replaced by neutral emotions. The final step was to add these emotions to the produced TF-IDF table as labels (classes) to perform the classification process.
+Finally, a 10-fold cross validation was made along with a population of 10 for the Genetic algorithm in addition of 20 iterations.
+
+
+
+\section{Experiments and results}
+\label{experiments}
+The results of Nikon dataset shows that it obtained an average accuracy of 80.9\% with a standard deviation of 5.3, with a selected feature subset of 653 features (words) out of 2218 representing only around 29\% of the total number of features. Results are shown in Table1.
+High classification accuracy for such a relatively small number of features shows promising results to be compared with the original dataset. Iterations and population of the genetic algorithm can also be increased in order to obtain more accurate results with less standard error.
+
+
+\section{Conclusions}
+\label{conclusion}
+
+Applying machine learning with sentiment analysis allows for obtaining better results through training the data. We have applied Support Vector Machine with Genetic Algorithm to increase the accuracy of the bag of words produced by TF-IDF with the minimum words possible which should decrease running time and enhance the performance in terms of accuracy. Results of this experiment indicate that more can be achieved through adjusting learning parameters. In addition, these results should be compared to the TF-IDF that is without feature selection.
+
+\bibliographystyle{splncs}
+\bibliography{ref}
+\end{document}
